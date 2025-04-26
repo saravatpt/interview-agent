@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Agent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Interview Agent</h1>
+
+        <div class="controls">
+            <label for="interviewId">Interview ID:</label>
+            <input type="text" id="interviewId" placeholder="e.g., C123">
+            <button id="startInterviewBtn">Start Interview</button>
+            <select id="videoMode">
+                <option value="camera">Use Camera</option>
+                <option value="screen">Share Screen</option>
+                <option value="none">Audio Only</option>
+            </select>
+             <button id="stopInterviewBtn" disabled>Stop Interview</button>
+        </div>
+
+        <div class="media-area">
+            <div id="video-container">
+                <video id="localVideo" autoplay muted playsinline></video>
+                <p id="mediaStatus">Waiting to start...</p>
+            </div>
+            <div id="agent-response">
+                <h2>Agent Response</h2>
+                <div id="agentTextOutput"></div>
+                <!-- Audio output will be handled programmatically -->
+            </div>
+        </div>
+
+        <div class="chat-area">
+            <h2>Chat</h2>
+            <div id="chatOutput">
+                <!-- Chat messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Type your message..." disabled>
+                <button id="sendChatBtn" disabled>Send</button>
+            </div>
+        </div>
+
+         <div class="hr-section">
+            <h2>HR Section</h2>
+            <label for="hrId">HR ID:</label>
+            <input type="text" id="hrId" placeholder="e.g., H1234">
+            <button id="getSummaryBtn">Get Summary</button>
+            <div id="interviewSummary">
+                <!-- Summary will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
