@@ -26,6 +26,9 @@ import PIL.Image
 import mss
 
 import argparse
+import time
+import os
+from dotenv import load_dotenv
 
 from google import genai
 from google.genai import types
@@ -40,8 +43,17 @@ MODEL = "models/gemini-2.0-flash-live-001"
 
 DEFAULT_MODE = "camera"
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Get the API key from the environment variable
+api_key = os.getenv("GEMINI_API_KEY")
+
+if not api_key:
+    raise ValueError("GEMINI_API_KEY is not set in the .env file")
+
 client = genai.Client(
-    api_key='',
+    api_key=api_key,
     http_options=types.HttpOptions(api_version='v1alpha')
 )
 
@@ -503,7 +515,7 @@ if __name__ == "__main__":
 
     # Wait briefly for the thread to start and potentially create the AudioLoop instance
     # This is a bit fragile, a better approach might use an Event or Condition
-    import time
+
     time.sleep(1) # Give the thread a moment to initialize AudioLoop
 
     # Now retrieve the instance and its methods
